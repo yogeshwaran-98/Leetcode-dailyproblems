@@ -1,0 +1,39 @@
+45 - JUMP GAME 2 - MEDIUM
+You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].
+
+Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at nums[i], you can jump to any nums[i + j] where:
+
+0 <= j <= nums[i] and
+i + j < n
+Return the minimum number of jumps to reach nums[n - 1]. The test cases are generated such that you can reach nums[n - 1].
+
+ 
+
+Example 1:
+
+Input: nums = [2,3,1,1,4]
+Output: 2
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+============================
+//start and end - the range one can jump from the current element
+//longest - the longest one can jump from the above range of elements.
+//Eg : for 1st element 2 -> start is 1st index ; end is 2nd index ; longest is 2nd index 
+
+class Solution {
+    public int jump(int[] nums) {
+        int start =0 , end =0 , jump =0;
+
+        while(far < nums.length -1){
+            int longest =0;
+
+            for(int i=start ; i <= end ; i++){
+                longest = Math.max(longest , i+ nums[i]);
+            }
+            start = end+1;
+            end = longest;
+            jump++;
+        }
+        return jump;
+    }
+}
