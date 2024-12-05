@@ -34,6 +34,7 @@ class Solution {
             totalCost += cost[i];
         }
 
+        //totalgas available should not be lower than totalgas required to travel , else return -1
         if(totalGas < totalCost) return -1;
 
         int currentGas =0 , start =0;
