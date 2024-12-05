@@ -34,3 +34,30 @@ class Solution {
         return hIndex;
     }
 }
+
+=========================
+//Creating a citation count array from 0 to length +1 -> 0 to 5
+//1st step -> count = [1, 1, 0, 1, 0, 2]
+public class Solution {
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        int[] count = new int[n + 1];
+        for (int citation : citations) {
+            if (citation >= n) {
+                count[n]++;
+            } else {
+                count[citation]++;
+            }
+        }
+
+// i=5 , total < 5 ; i=4 , total < 4 ; i=3 , total >= 3 , hIndex = 3
+        int total = 0;
+        for (int i = n; i >= 0; i--) {
+            total += count[i];
+            if (total >= i) {
+                return i;
+            }
+        }   
+        return 0;
+    }
+}
