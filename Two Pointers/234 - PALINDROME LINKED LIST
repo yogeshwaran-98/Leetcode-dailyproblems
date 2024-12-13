@@ -1,0 +1,72 @@
+234 - PALINDROME LINKED LIST
+Given the head of a singly linked list, return true if it is a 
+palindrome
+ or false otherwise.
+
+ Example 1:
+
+
+Input: head = [1,2,2,1]
+Output: true
+Example 2:
+
+
+Input: head = [1,2]
+Output: false
+
+==========
+
+METHOD : Use slow and fast pointers and find the middle , reverse the list from the slow pointer(from middle to end )
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if(head == null) return true;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode temp = reverseList(slow);
+
+        while(temp != null){
+            if(head.val != temp.val){
+                return false;
+            }else{
+                temp = temp.next;
+                head = head.next;
+            }
+        }
+
+        return true;
+
+
+    }
+
+    public ListNode reverseList(ListNode root){
+        ListNode output = null;
+
+        while(root != null){
+            ListNode temp = root.next;
+            root.next = output;
+            output = root;
+            root = temp;
+        }
+
+        return output;
+
+    }
+}
