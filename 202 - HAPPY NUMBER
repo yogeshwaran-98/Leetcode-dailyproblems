@@ -26,7 +26,7 @@ class Solution {
         int slow = nextnum(n);
         int fast = nextnum(nextnum(n));
 
-        while(slow != fast){
+        while(slow != fast){  //to check consecutive numbers are same , to prevent endless loop 4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4
 
             if(fast == 1) return true;
             slow = nextnum(slow);
