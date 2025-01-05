@@ -1,0 +1,88 @@
+143 - REORDER LIST - MEDIUM
+
+You are given the head of a singly linked-list. The list can be represented as:
+
+L0 → L1 → … → Ln - 1 → Ln
+Reorder the list to be on the following form:
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4]
+Output: [1,4,2,3]
+
+===========================
+
+class Solution {
+    public void reorderList(ListNode head) {
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode secondStart = slow.next;
+        slow.next = null;
+
+        ListNode firstStart = head;
+        
+        secondStart = reverseList(secondStart);
+
+        while(secondStart != null){
+            ListNode temp1 = firstStart.next;
+            ListNode temp2 = secondStart.next;
+
+            firstStart.next = secondStart;
+            secondStart.next = temp1;
+
+            firstStart = temp1;
+            secondStart = temp2;
+        }
+    }
+
+    public ListNode reverseList(ListNode head){
+        ListNode output = null;
+
+        while(head != null){
+            ListNode temp = head.next;
+            head.next = output;
+
+            output = head;
+            head = temp;
+        }
+        return output;
+    }
+}
+
+======================================
+
+class Solution {
+    public void reorderList(ListNode head) {
+
+        //if the list has only two nodes
+        if(head == null || head.next == null || head.next.next == null) return;
+
+        ListNode last = head;
+        ListNode secLast = head;
+        ListNode temp = head.next;
+
+        while(last.next != null){
+            secLast = last;
+            last = last.next;
+        }
+
+        head.next = last;
+        last.next = temp;
+        secLast.next = null;
+
+        reorderList(temp);
+    } 
+}
