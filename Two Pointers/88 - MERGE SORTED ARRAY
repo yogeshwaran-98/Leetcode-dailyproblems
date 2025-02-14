@@ -4,7 +4,24 @@ You are given two integer arrays nums1 and nums2, sorted in non-decreasing order
 Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 
 The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+✅ Applying the Cheatsheet Questions to This Problem
+1️⃣ How Do You Need to Traverse?
 
+✅ From the end of nums1 (right to left).
+Why? If we start from the beginning, shifting elements would be inefficient. Instead, placing the largest elements at the end avoids unnecessary shifts.
+2️⃣ Do You Need to Track Min/Max Values While Traversing?
+
+✅ Yes, compare the last elements of nums1 (valid part) and nums2.
+Why? Since both arrays are sorted, the larger of the two current elements should be placed at the end of nums1.
+3️⃣ Do You Need to Find a Pair, Triplet, or Subarray?
+
+❌ No, we are simply merging two sorted arrays.
+4️⃣ Do You Need to Modify the Array In-Place?
+
+✅ Yes, modify nums1 in place by placing the largest elements first (from the end).
+5️⃣ Do You Need to Search for an Element?
+
+❌ No, we already have sorted arrays, and we are merging them directly.
  
 
 Example 1:
