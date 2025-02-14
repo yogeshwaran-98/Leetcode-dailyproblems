@@ -1,0 +1,103 @@
+🔥 The Ultimate Array Problem-Solving Question Technique 🔥
+Whenever you see an array problem, ask yourself the following guiding questions. These will lead you directly to the best approach for solving the problem efficiently.
+
+1️⃣ How Do You Need to Traverse the Array?
+🔹 From Start to End?
+
+✅ Use a single loop if each element is processed in order (e.g., sum, max, min).
+✅ Kadane’s Algorithm (max subarray sum), prefix sum, or sliding window often follow this pattern.
+🔹 From Both Ends?
+
+✅ Use Two-Pointer Technique (e.g., Trapping Rain Water, Two Sum in sorted array).
+✅ Works well when comparing elements from both sides.
+🔹 From Middle Outward?
+
+✅ Binary Search problems often require this (e.g., finding peak element).
+✅ Works for palindrome-related problems (expand from the center).
+2️⃣ Do You Need to Track Min/Max Values While Traversing?
+🔹 Yes? → Consider:
+
+✅ Prefix Max / Suffix Max (e.g., Trapping Rain Water).
+✅ Kadane’s Algorithm (max subarray sum).
+✅ Monotonic Stack (next greater/smaller element problems).
+🔹 No? → Likely a sorting-based or simple traversal problem.
+
+3️⃣ Do You Need to Find a Pair, Triplet, or Subarray?
+🔹 Pair (Two Elements)?
+
+✅ Two-Pointer Approach (if sorted).
+✅ HashMap / HashSet (if sum or difference needs to be checked).
+🔹 Triplet / Quadruplet?
+
+✅ Sorting + Two-Pointer (e.g., Three Sum).
+✅ HashMap for frequency counting.
+🔹 Subarray / Substring?
+
+✅ Sliding Window (if contiguous elements matter).
+✅ Kadane’s Algorithm (if looking for max sum subarray).
+✅ Prefix Sum (if subarray sums need to be computed efficiently).
+4️⃣ Do You Need to Modify the Array In-Place?
+🔹 Yes? →
+
+✅ Two-Pointer (slow/fast approach) for removing elements efficiently.
+✅ In-place swaps (for sorting-based problems).
+✅ Use a single loop if modification can be done inline.
+🔹 No? →
+
+✅ Can use extra space (HashMap, auxiliary arrays, etc.).
+5️⃣ Do You Need to Search for an Element Efficiently?
+🔹 Is the Array Sorted?
+
+✅ Binary Search (O(log n) search time).
+✅ Two-Pointer (for sum-based problems).
+🔹 Is the Array Unsorted?
+
+✅ Use HashSet/HashMap (O(1) lookup for duplicates or existence check).
+✅ Sort first, then use binary search (if needed).
+6️⃣ Does Order Matter?
+🔹 Yes?
+
+✅ Sorting-based approaches work well (merge intervals, triplets).
+✅ Prefix sum helps maintain cumulative order.
+🔹 No?
+
+✅ Use HashMap / HashSet (unordered lookups are faster).
+✅ Sorting may not be necessary.
+7️⃣ Is It a Sum/Count Problem?
+🔹 Fixed-length sum?
+
+✅ Prefix sum (precompute).
+✅ Sliding window (for moving subarray sums).
+🔹 Variable-length sum?
+
+✅ Sliding window (expanding/shrinking to find min/max sum).
+🔹 Multiple queries?
+
+✅ Prefix sum (O(1) query after O(n) preprocessing).
+8️⃣ Is the Array Mutating Over Time?
+🔹 Do elements change after queries?
+
+✅ Use Fenwick Tree / Segment Tree for efficient updates.
+🔹 Is the array static after initial setup?
+
+✅ Precompute prefix sums, sorting, etc.
+📌 APPLYING THIS TO "TRAPPING RAIN WATER"
+Step 1: How Do You Need to Traverse?
+✅ From both ends (left and right) → Two-Pointer Approach
+
+Step 2: Do You Need to Track Min/Max Values?
+✅ Yes, track leftMax & rightMax → Helps determine trapped water.
+
+Step 3: Do You Need to Find a Pair, Triplet, or Subarray?
+❌ No, but we compare neighboring elements to decide how much water can be stored.
+
+Step 4: Do You Need to Modify the Array In-Place?
+❌ No modifications, just calculations.
+
+Step 5: Do You Need to Search for an Element?
+❌ No searching, just traversal.
+
+Final Conclusion: Use the Two-Pointer Approach with leftMax & rightMax to efficiently compute the trapped water in O(n). ✅
+
+🔥 FINAL TAKEAWAY
+Whenever you're stuck on an array problem, ask yourself these 8 questions in order. The answers will directly lead you to the right approach every time! 🚀
