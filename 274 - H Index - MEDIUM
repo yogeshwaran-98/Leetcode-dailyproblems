@@ -14,6 +14,32 @@ Since the researcher has 3 papers with at least 3 citations each and the remaini
 
 ======================
 
+public class Solution {
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        int paper = 1;
+        int h=0;
+        
+        Arrays.sort(citations);
+
+        for(int i= n-1 ; i >= 0 ; i--){
+            
+            if(citations[i] >= paper && paper <=n){
+                h= paper;
+                paper++;
+
+            }
+                
+        }
+
+        return h;
+    }
+}
+
+=======================
+
+
+
 class Solution {
     public int hIndex(int[] citations) {
         Arrays.sort(citations);
