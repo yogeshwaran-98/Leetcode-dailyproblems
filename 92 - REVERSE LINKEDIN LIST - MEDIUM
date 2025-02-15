@@ -1,0 +1,50 @@
+92 - REVERSE LINKEDIN LIST - MEDIUM
+
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+
+Example 1:
+
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+
+APPROACH: 
+Create a prev pointer to track the node before the target range 
+Reverse the nodes from the given range 
+
+Point the prev.next.next = current ( node after the target range )
+Point the prev.next = reverse (1st node of the reversed range)
+
+=============================
+
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        
+        
+        ListNode output = new ListNode(0);
+        output.next = head;
+
+        ListNode prev = output;
+
+        for(int i = 1 ; i < left ; i++){
+            prev = prev.next;
+        }
+
+        ListNode current = prev.next;
+        ListNode next = null;
+        ListNode reverse = null;
+
+        for(int i= left ; i <= right; i++){
+            next = current.next;
+            current.next = reverse;
+            reverse = current;
+            current = next;
+        }
+
+        prev.next.next = current;
+        prev.next = reverse;
+
+        return output.next;
+ 
+    }
+}
+
